@@ -4,7 +4,7 @@ image:
 - Visual Studio 2013
 
 build_script:
-- cmd: .\build.cmd Build
+- cmd: .\build.cmd
 
 notifications:
 - provider: Email
