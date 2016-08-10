@@ -6,6 +6,8 @@ image:
 build_script:
 - cmd: .\build.cmd
 
+test: off
+
 notifications:
 - provider: Email
   to:

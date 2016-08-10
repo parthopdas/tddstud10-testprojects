@@ -5,11 +5,6 @@ open Fake
 open System
 open System.IO
 
-let buildOne cmd =
-    async {
-        return cmd
-    }
-
 // Targets
 Target "BuildAll" (fun _ ->
     !! "**/build.cmd"
