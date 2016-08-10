@@ -6,7 +6,7 @@ open System
 open System.IO
 
 // Targets
-Target "BuildAll" (fun _ ->
+Target "Build" (fun _ ->
     !! "**/build.cmd"
     |> Seq.filter (fun it -> not <| it.Equals(Path.GetFullPath("./build.cmd"), StringComparison.OrdinalIgnoreCase))
     |> Seq.map (fun it -> Shell.AsyncExec(it, "", Path.GetDirectoryName(it)))
@@ -18,4 +18,4 @@ Target "BuildAll" (fun _ ->
 )
 
 // start build
-RunTargetOrDefault "BuildAll"
+RunTargetOrDefault "Build"
