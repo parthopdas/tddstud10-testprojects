@@ -1,5 +1,7 @@
-﻿Imports NUnit.Framework
+﻿#If Not BREAK_BUILD Then
+Imports NUnit.Framework
 Imports Xunit
+#End If
 
 <TestFixture()>
 Public Class AppSettingTests
@@ -26,11 +28,19 @@ Public Class AppSettingTests
 
     <Test()>
     Public Sub name()
+#If Not BREAK_TEST Then
         NUnit.Framework.Assert.AreSame(mAppSetting.name, nameval)
+#Else
+        NUnit.Framework.Assert.AreSame(mAppSetting.name + "?", nameval)
+#End If
     End Sub
 
     <Fact()>
     Public Sub name2()
+#If Not BREAK_TEST Then
         Xunit.Assert.Equal(New AppSetting(idval, nameval).name, nameval)
+#Else
+        Xunit.Assert.Equal(New AppSetting(idval, nameval).name, nameval + "?")
+#End If
     End Sub
 End Class

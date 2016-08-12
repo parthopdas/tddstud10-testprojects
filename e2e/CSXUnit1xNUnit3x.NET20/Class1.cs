@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace CSXUnit1xNUnit3x
@@ -21,6 +20,11 @@ namespace CSXUnit1xNUnit3x
         [NUnit.Framework.Datapoint]
         public double positive = 1;
 
+#if BREAK_TEST
+        [NUnit.Framework.Datapoint]
+        public double negative = -1;
+#endif
+
         [NUnit.Framework.Theory]
         public void SquareRootDefinition(double num)
         {
@@ -35,15 +39,30 @@ namespace CSXUnit1xNUnit3x
         [Fact]
         public void TestToSkip()
         {
-            Assert.Equal(0, 0);
+            Assert.Equal(
+#if !BREAK_TEST
+                0
+#else
+                1
+#endif
+                , 0);
         }
     }
 
+#if !BREAK_BUILD
     public class IndexOfData : IEnumerable<object[]>
+#endif
     {
         private readonly List<object[]> _data = new List<object[]>
     {
-        new object[] { "hello world", 'w', 6 },
+        new object[] {
+            "hello world", 'w',
+#if !BREAK_TEST
+            6
+#else
+            7
+#endif
+        },
         new object[] { "goodnight moon", 'w', -1 }
     };
 
