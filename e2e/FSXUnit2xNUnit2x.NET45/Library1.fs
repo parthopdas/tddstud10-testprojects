@@ -1,6 +1,7 @@
 ﻿namespace FSXUnit2xNUnit2x
 
-#if !BREAK_BUILD
+#if BREAK_BUILD
+#else
 open global.Xunit
 open FsCheck.Xunit
 open FsCheck
@@ -12,10 +13,10 @@ type Class1() =
     let ``Reverse of reverse of a list is the original list``(xs:list<int>) =
         List.rev(List.rev xs) = 
             xs @ 
-#if !BREAK_TEST
-            []
-#else
+#if BREAK_TEST
             [0xdeadbeef]
+#else
+            []
 #endif
 
     let run c (s : string) = s.Split([|c|]).[0]
@@ -36,10 +37,10 @@ type Class1() =
     [<NUnit.Framework.Test>]
     member __.shouldSayHelloWithFsUnit () = 
         ("Hello " + 
-#if !BREAK_TEST
-        "World!"
+#if BREAK_TEST
+            "???"
 #else
-        "???"
+            "World!"
 #endif
         ) 
         |> should equal "Hello World!"
