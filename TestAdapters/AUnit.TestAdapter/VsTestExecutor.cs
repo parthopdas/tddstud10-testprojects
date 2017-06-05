@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace AUnit.TestAdapter
 {
+    [ExtensionUri("executor://AUnit.TestAdapter")]
     public class VsTestExecutor : ITestExecutor
     {
         private Runtime.Class1 rt = new Runtime.Class1();

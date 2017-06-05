@@ -3,6 +3,7 @@
 open Microsoft.VisualStudio.TestPlatform.ObjectModel
 open Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
 
+[<DefaultExecutorUri("executor://BUnit.TestAdapter")>]
 type VsTestDiscoverer() = 
     let rt = Runtime.Class1()
     interface ITestDiscoverer with

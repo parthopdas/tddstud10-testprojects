@@ -3,6 +3,7 @@
 open Microsoft.VisualStudio.TestPlatform.ObjectModel
 open Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
 
+[<ExtensionUri("executor://BUnit.TestAdapter")>]
 type VsTestExecutor() = 
     let rt = Runtime.Class1()
     interface ITestExecutor with
